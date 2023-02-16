@@ -26,5 +26,20 @@ public class FizzBuzzTest {
     void should_return_Buzz_when_value_is_multiple_of_5(int input, String expected) {
         assertEquals(expected, fizzBuzz.convert(input));
     }
+
+    @Test
+    void should_return_FizzBuzz_when_value_is_15() {
+        assertEquals("FizzBuzz", fizzBuzz.convert(15));
+    }
+
+    @Test
+    void should_return_FizzBuzz_when_value_is_30() {
+        assertEquals("FizzBuzz", fizzBuzz.convert(30));
+    }
+
+    @Test
+    void should_return_FizzBuzz_when_value_is_45() {
+        assertEquals("FizzBuzz", fizzBuzz.convert(45));
+    }
 }
 
