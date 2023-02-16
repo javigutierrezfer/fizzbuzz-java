@@ -1,25 +1,18 @@
 package com.deg540.fizzbuzz;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FizzBuzzTest {
     FizzBuzz fizzBuzz = new FizzBuzz();
 
-    @Test
-    public void convert_1_to_1() {
-        assertEquals("1", fizzBuzz.convert(1));
-    }
-
-    @Test
-    public void convert_2_to_2() {
-        assertEquals("2", fizzBuzz.convert(2));
-    }
-
-    @Test
-    public void convert_4_to_4() {
-        assertEquals("4", fizzBuzz.convert(4));
+    @ParameterizedTest(name = "should return {1} when input is {0}")
+    @CsvSource({"1,1", "3,3", "4,4"})
+    void should_return_same_value_for_common_cases(int input, String expected) {
+        assertEquals(expected, fizzBuzz.convert(input));
     }
 }
 
