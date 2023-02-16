@@ -1,30 +1,26 @@
 package com.deg540.fizzbuzz;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 class FizzBuzz {
 
+    private final Rule[] rules;
+
+    public FizzBuzz(Rule... rules) {
+        this.rules = rules;
+    }
+
     public String convert(int number) {
-
-        String result = "";
-
-        if (number % 3 == 0) {
-            result = "Fizz";
-        }
-
-        if (number % 5 == 0) {
-            result += "Buzz";
-        }
-
-
-        return result.isEmpty() ? String.valueOf(number) : result;
+        return Arrays.stream(rules).filter(rule -> rule.match(number)).findFirst().map(Rule::replace).orElse(String.valueOf(number));
     }
 
     public List<String> generate(int size) {
-        List<String> numbers = IntStream.rangeClosed(1, size).mapToObj(this::convert).collect(Collectors.toList());
 
-        return numbers;
+        return IntStream.rangeClosed(1, size).mapToObj(this::convert).collect(Collectors.toList());
     }
 }
