@@ -15,19 +15,10 @@ public class FizzBuzzTest {
         assertEquals(expected, fizzBuzz.convert(input));
     }
 
-    @Test
-    void should_return_Fizz_when_value_is_3() {
-        assertEquals("Fizz", fizzBuzz.convert(3));
-    }
-
-    @Test
-    void should_return_Fizz_when_value_is_6() {
-        assertEquals("Fizz", fizzBuzz.convert(6));
-    }
-
-    @Test
-    void should_return_Fizz_when_value_is_9() {
-        assertEquals("Fizz", fizzBuzz.convert(9));
+    @ParameterizedTest(name = "should return {1} when input is {0}")
+    @CsvSource({"3,Fizz", "6,Fizz", "9,Fizz"})
+    void should_return_Fizz_when_value_is_multiple_of_3(int input, String expected) {
+        assertEquals(expected, fizzBuzz.convert(input));
     }
 }
 
