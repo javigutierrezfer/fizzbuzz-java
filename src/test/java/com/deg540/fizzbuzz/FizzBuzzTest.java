@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FizzBuzzTest {
@@ -31,6 +33,14 @@ public class FizzBuzzTest {
     @CsvSource({"15,FizzBuzz", "30,FizzBuzz", "45,FizzBuzz"})
     void should_return_FizzBuzz_when_value_is_multiple_of_15(int input, String expected) {
         assertEquals(expected, fizzBuzz.convert(input));
+    }
+
+    @Test
+    void should_apply_FizzBuzz_rules_for_100_elements (){
+        List<String> elements = fizzBuzz.generate(100);
+
+        System.out.println(elements);
+        assertEquals(elements.size(), 100);
     }
 }
 
