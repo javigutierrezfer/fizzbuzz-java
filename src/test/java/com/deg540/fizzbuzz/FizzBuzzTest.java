@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FizzBuzzTest {
-    FizzBuzz fizzBuzz = new FizzBuzz(new FizzRule());
+    FizzBuzz fizzBuzz = new FizzBuzz(new FizzBuzzRule(),new FizzRule(), new BuzzRule());
 
     @ParameterizedTest(name = "should return {1} when input is {0}")
     @CsvSource({"1,1", "2,2", "4,4"})
